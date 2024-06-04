@@ -107,8 +107,8 @@ esp_err_t connect_wifi()
     /** START THE WIFI DRIVER **/
     wifi_config_t wifi_config = {
         .sta = {
-            .ssid = "ssid-for-me",
-            .password = "super-secure-password",
+            .ssid = "NOPE",
+            .password = "NOPENOPENOPENOPENOPE",
 	     .threshold.authmode = WIFI_AUTH_WPA2_PSK,
             .pmf_cfg = {
                 .capable = true,
@@ -163,7 +163,7 @@ esp_err_t connect_tcp_server(void)
 	char readBuffer[1024] = {0};
 
 	serverInfo.sin_family = AF_INET;
-	serverInfo.sin_addr.s_addr = 0x0100007f;
+	serverInfo.sin_addr.s_addr = 0x3801a8c0;
 	serverInfo.sin_port = htons(12345);
 
 
@@ -208,6 +208,7 @@ void app_main(void)
       ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK(ret);
+    ESP_LOGI(TAG, "Storage initialize successfully");
 
     // connect to wireless AP
 	status = connect_wifi();
